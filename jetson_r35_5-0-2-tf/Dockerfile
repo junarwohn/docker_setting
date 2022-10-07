@@ -1,8 +1,10 @@
 FROM nvcr.io/nvidia/l4t-tensorflow:r35.1.0-tf2.9-py3
 
-RUN apt-get update
-RUN apt-get install -y apt-utils 
-RUN apt-get upgrade -y
+#RUN apt-get update && apt-get install -y --no-install-recommends \
+#    vim \
+#    apt-utils \
+#RUN apt-get -y install sudo dialog apt-utils
+#RUN apt-get upgrade -y
 RUN apt-get update && apt-get -y install sudo
 #RUN apt-get install -y apt-utils 
 #RUN apt-get install -y vim git x11-apps
@@ -18,7 +20,7 @@ RUN apt-get update && apt-get -y install sudo
 #RUN pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v50 tensorflow
 
 RUN echo "root:cass1234!" | chpasswd
-RUN useradd -ms /bin/bash jd && echo "jd:cass1234!" | chpasswd && adduser jd sudo
+RUN useradd -ms /bin/bash jd && echo "jd:cass1234!" | chpasswd && adduser jd sudo && usermod -a -G video jd
 
 RUN mkdir /home/jd/workspace
 
