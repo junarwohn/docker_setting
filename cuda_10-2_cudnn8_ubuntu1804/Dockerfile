@@ -1,5 +1,8 @@
 FROM nvidia/cuda:10.2-cudnn8-devel-ubuntu18.04
 
+ARG ARG_USER_ID="docker"
+ARG ARG_PASSWD="1234"
+
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get update && apt-get -y install sudo
@@ -9,10 +12,10 @@ RUN apt-get install -y python3 python3-dev python3-setuptools gcc libtinfo-dev z
 RUN apt-get install -y llvm  
 RUN apt-get install -y libgl1-mesa-glx 
 
-RUN echo "root:cass1234!" | chpasswd
-RUN useradd -ms /bin/bash jd && echo "jd:cass1234!" | chpasswd && adduser jd sudo
+RUN echo "root:"${ARG_USER_ID} | chpasswd
+RUN useradd -ms /bin/bash ${ARG_USER_ID} && echo ${ARG_USER_ID}":"${ARG_PASSWD} | chpasswd && adduser ${ARG_USER_ID} sudo
 
-RUN mkdir /home/jd/workspace
+RUN mkdir /home/${ARG_USER_ID}/workspace
 
-USER jd
+USER ${ARG_USER_ID}
 
