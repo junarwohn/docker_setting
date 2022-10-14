@@ -52,15 +52,24 @@ We don't need `Nvidia-Docker` anymore, `docker` support GPU acceration natively.
     ```
 6. Some basic commands.
 
+    **Host (Outside Docker)**
+
     - `docker -ps -al` for List all docker containers.
 
     - `docker images` for List all docker Images
+
+    - `docker start your_container_name` for Starting running container.
+
+    - `docker attach your_container_name` for Attaching running container.
+
+    - `docker stop your_container_name` for Stopping running container.
+
+    **Container (Inside Docker)**
 
     - Just type `exit` inside docker for Stopping the docker container. 
 
     - `Ctrl+p and Ctrl+q` for Detaching the docker container.
     
-    - `docker attach your_container_name` for Attaching running container.
 
 7. If you want to display GUI of docker
 
