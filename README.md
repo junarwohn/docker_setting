@@ -40,15 +40,15 @@ We don't need `Nvidia-Docker` anymore, `docker` support GPU acceration natively.
     sudo systemctl restart docker
     ```
 
-3. Uncomment desirable command in `docker_build.sh` and change some username and password to use in docker.
+3. Uncomment desirable command in `01-docker_build.sh` and change some username and password to use in docker.
 
-4. Uncomment desirable command in `docker_run.sh` and change some username and password to use in docker.
+4. Uncomment desirable command in `02-docker_run.sh` and change some username and password to use in docker.
 
 5. Run
     ```
-    bash docker_build.sh
+    bash 01-docker_build.sh
 
-    bash docker_run.sh
+    bash 02-docker_run.sh
     ```
 6. Some basic commands.
 
@@ -209,7 +209,7 @@ Find well-made docker images.
 For example, you can build image by 
 
 ```
-bash docker_build.sh
+bash 01-docker_build.sh
 ```
 
 **Actual download process** run during build, so the only thing you care about is **check the docker image url** 
@@ -230,7 +230,7 @@ Make container is like creating some
 You can make container by
 
 ```
-bash docker_run.sh
+bash 02-docker_run.sh
 ```
 
 In this phase, you can set 
