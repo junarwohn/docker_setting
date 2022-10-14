@@ -50,7 +50,17 @@ We don't need `Nvidia-Docker` anymore, `docker` support GPU acceration natively.
 
     bash docker_run.sh
     ```
-6. You can detach docker container by `Ctrl+p and Ctrl+q`. And attach running container by `docker attach your_container_name`
+6. Some basic commands.
+
+    - `docker -ps -al` for List all docker containers.
+
+    - `docker images` for List all docker Images
+
+    - Just type `exit` inside docker for Stopping the docker container. 
+
+    - `Ctrl+p and Ctrl+q` for Detaching the docker container.
+    
+    - `docker attach your_container_name` for Attaching running container.
 
 7. If you want to display GUI of docker
 
