@@ -6,13 +6,55 @@ To test application in various setting and free from all OS dependency, `docker`
 
 We don't need `Nvidia-Docker` anymore, `docker` support GPU acceration natively.
 
+## TL;DR
+
+1. Install [docker](https://docs.docker.com/engine/install/ubuntu/)
+
+2. run 
+    ```
+    sudo groupadd docker
+
+    sudo usermod -aG docker ${USER}
+
+    sudo service docker restart
+    ```
+    
+    I bet you want to use gpu, run
+    
+    ```
+    distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
+        && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - \
+        && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+
+    sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
+    sudo systemctl restart docker
+    ```
+
+3. Uncomment desirable command in `docker_build.sh` and change some username and password to use in docker.
+
+4. Uncomment desirable command in `docker_run.sh` and change some username and password to use in docker.
+
+5. run
+    ```
+    bash docker_build.sh
+
+    bash docker_run.sh
+    ```
+6. You can detach docker container by `Ctrl+p and Ctrl+q`. And attach running container by `docker attach your_container_name`
+
+7. If you share display with docker
+
+    ```
+    xhost +local:docker
+    ```
+    
 ## Before you run these scripts...
 
 - Honestly, **I'm not a docker expert.**
 
 - My method can be ***a way different from common usages***. Do at your own risk.
 
-- We cannot directly access the data inside *docker* except *sharing directory (`$USER/workspace` as default share directory in my script)*.
+- We cannot directly access the data inside *docker* except for *sharing directory (`$USER/workspace` as default share directory in my script)*.
 
 - **Your data can be lost when removing docker container.**
 

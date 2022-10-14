@@ -1,0 +1,10 @@
+export TVM_HOME=~/workspace/tvm-v0.8.0
+export PYTHONPATH=$TVM_HOME/python:${PYTHONPATH}
+
+
+export MOZER_HOME=~/workspace/mozer
+export PYTHONPATH=$MOZER_HOME/python:${PYTHONPATH}
+export TS_DATA_PATH=~/workspace/data/
+
+export LD_LIBRARY_PATH="/usr/local/cuda-11.0/lib64:$LD_LIBRARY_PATH"
+

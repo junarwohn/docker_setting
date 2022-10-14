@@ -1,5 +1,8 @@
 FROM nvcr.io/nvidia/l4t-tensorflow:r35.1.0-tf2.9-py3
 
+ARG ARG_USER_ID="docker"
+ARG ARG_PASSWD="1234"
+
 #RUN apt-get update && apt-get install -y --no-install-recommends \
 #    vim \
 #    apt-utils \
@@ -19,9 +22,9 @@ RUN apt-get update && apt-get -y install sudo
 #RUN pip3 install -U numpy==1.19.4 future==0.18.2 mock==3.0.5 h5py==2.10.0 keras_preprocessing==1.1.1 keras_applications==1.0.8 gast==0.2.2 futures protobuf pybind11
 #RUN pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v50 tensorflow
 
-RUN echo "root:cass1234!" | chpasswd
-RUN useradd -ms /bin/bash jd && echo "jd:cass1234!" | chpasswd && adduser jd sudo && usermod -a -G video jd
+RUN echo "root:"${ARG_USER_ID} | chpasswd
+RUN useradd -ms /bin/bash ${ARG_USER_ID} && echo ${ARG_USER_ID}":"${ARG_PASSWD} | chpasswd && adduser ${ARG_USER_ID} sudo && usermod -a -G video  ${ARG_USER_ID}
 
-RUN mkdir /home/jd/workspace
+RUN mkdir /home/${ARG_USER_ID}/workspace
 
-USER jd
+USER ${ARG_USER_ID}
