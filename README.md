@@ -8,9 +8,9 @@ We don't need `Nvidia-Docker` anymore, `docker` support GPU acceration natively.
 
 ## TL;DR
 
-1. Install [docker](https://docs.docker.com/engine/install/ubuntu/)
+0. Install [docker](https://docs.docker.com/engine/install/ubuntu/)
 
-2. run 
+1. run 
     ```
     sudo groupadd docker
 
@@ -19,7 +19,17 @@ We don't need `Nvidia-Docker` anymore, `docker` support GPU acceration natively.
     sudo service docker restart
     ```
     
-    I bet you want to use gpu, run
+    I bet you want to use gpu.
+    
+    Make sure you have installed nvidia-driver.
+    
+    Check
+
+    ```
+    nvidia-smi
+    ```
+    
+    Then run
     
     ```
     distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
@@ -34,7 +44,7 @@ We don't need `Nvidia-Docker` anymore, `docker` support GPU acceration natively.
 
 4. Uncomment desirable command in `docker_run.sh` and change some username and password to use in docker.
 
-5. run
+5. Run
     ```
     bash docker_build.sh
 
@@ -42,7 +52,7 @@ We don't need `Nvidia-Docker` anymore, `docker` support GPU acceration natively.
     ```
 6. You can detach docker container by `Ctrl+p and Ctrl+q`. And attach running container by `docker attach your_container_name`
 
-7. If you share display with docker
+7. If you want to display GUI of docker
 
     ```
     xhost +local:docker
