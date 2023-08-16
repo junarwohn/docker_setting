@@ -1,7 +1,7 @@
 FROM nvcr.io/nvidia/l4t-tensorflow:r35.1.0-tf2.9-py3
 
-ARG ARG_USER_ID="docker"
-ARG ARG_PASSWD="1234"
+ARG ARG_USER_ID="jd"
+ARG ARG_PASSWD="Cass1234!"
 
 #RUN apt-get update && apt-get install -y --no-install-recommends \
 #    vim \
